@@ -1,4 +1,5 @@
-/* test */
-div {
-  background-color: aqua;
+#container {
+  width: 60%;
+  margin: auto;
+  padding: 10px
 }

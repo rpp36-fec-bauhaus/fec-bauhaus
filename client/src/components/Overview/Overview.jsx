@@ -1,16 +1,17 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
 import StarRating from './StarRating.jsx';
+import './overview.css'
 
 class Overview extends React.Component {
   render () {
     return (
       <div>
-        <div style={{width: '70%', float:'left'}}>
+        <div id='gallery'>
           <Gallery />
         </div>
 
-        <div style={{width: '30%', float:'right'} }>
+        <div id='description'>
           placeholder for product details, style, add to basket
           <StarRating />
         </div>

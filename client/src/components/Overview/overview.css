@@ -1,0 +1,9 @@
+#gallery {
+  width: 70%;
+  float: left
+}
+
+#description {
+  width: 30%;
+  float: right
+}

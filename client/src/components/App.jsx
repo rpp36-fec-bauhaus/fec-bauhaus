@@ -11,7 +11,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id='container' style={{width: '60%', margin: 'auto', padding: '10px'}}>
+      <div id='container'>
       <h1>To be changed into a nav bar</h1>
       <Overview />
       </div>
