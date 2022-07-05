@@ -1,8 +1,6 @@
 import React from 'react';
 import Rating from './Rating.jsx';
-import fakeData from './FakeData.js';
 import Summary from './Summary.jsx';
-import meta from './MetaData.js';
 
 
 
@@ -13,7 +11,7 @@ class ReviewsRatings extends React.Component {
       productId: props.productId,
       reviewsResults:[],
       sort: 'newest',
-      metaData: meta,
+      metaData: getInitialMetaData(),
       count: 5,
     }
   }
@@ -45,7 +43,11 @@ class ReviewsRatings extends React.Component {
 
     fetch(url)
     .then(response => response.json())
-    .then(data=>{console.log('data ID '+data.recommended.false);this.setState({metaData:data})})
+    .then(data=>{
+      this.setState({metaData:data}, () => {
+        console.log(data);
+      });
+    })
     .catch(err=> console.log(err))
   }
 
@@ -64,5 +66,16 @@ class ReviewsRatings extends React.Component {
     );
   }
 };
+
+var getInitialMetaData = () => {
+  return {"product_id":"0",
+  "ratings":{"1":"0","2":"0","3":"0","4":"0","5":"0"},
+  "recommended":{"false":"0","true":"0"},
+  "characteristics":{
+    "Fit":{"id":0,"value":"0"},
+    "Length":{"id":0,"value":"0"},
+    "Comfort":{"id":0,"value":"0"},
+    "Quality":{"id":0,"value":"0"}}}
+}
 
 export default  ReviewsRatings;
