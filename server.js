@@ -25,43 +25,49 @@ var options ={
 }
 
 app.get('/reviews',(req,res)=>{
-  // var product_id = req.body.product_id;
-  // var page = req.body.page;
-  // var sort = req.body.sort;
-  // var count = req.body.count;
-  console.log('req.query'+req.query.page)
-  var {product_id, sort, count,page} = req.query;
+
+  console.log(req.query)
+  var productId = req.query.product_id;
+  var page = req.query.page;
+  var sort = req.query.sort;
+  var count = req.query.count;
 
 
-  var url =`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${product_id}&sort=${sort}&count=${count}&page=${page}`
-  // var url =`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp36/reviews?product_id=1&sort=newest&count=5`
-  console.log(url)
-
+  var url =`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${productId}&sort=${sort}&count=${count}&page=${page}`
+  // // var url =`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp36/reviews?product_id=1&sort=newest&count=5`
+  // console.log(url)
+  console.log(url);
   axios.get(url,options)
   .then(data=>{
-    console.log('API data in get reviews '+ data.data.results);
-    res.send(data.data)
+    console.log(data.data.results);
+    res.json(data.data)
   })
-  .catch(err=> res.status(500).send('API err inside data get reviews'))
+  .catch(err=> {
+    console.log(err.message);
+    res.status(500).send('API err inside data get reviews')
+  });
+});
 
-})
-app.get('/reviews/meta/:product_id',(req,res)=>{
+app.get('/reviews/meta:product_id',(req,res)=>{
   // var product_id = req.body.product_id;
   // var page = req.body.page;
   // var sort = req.body.sort;
   // var count = req.body.count;
-  console.log('req.params'+req.params.product_id)
-   var product_id = req.params.product_id;
+  //console.log('req.params'+req.params.product_id)
+  var product_id = req.params.product_id;
 
   var url =`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=${product_id}`
 
   axios.get(url,options)
   .then(data=>{
-    console.log('API data in get meta reviews '+ data.data);
-    res.send(data.data)
+    //console.log('API data in get meta reviews '+ data.data);
+    res.json(data.data)
   })
-  .catch(err=> res.status(500).send('API err inside data get meta reviews'))
-})
+  .catch(err=> {
+    console.log(err.message);
+    res.status(500).send('API err inside data get meta reviews')
+  });
+});
 
 app.get('/products:product_id',(req,res)=>{
   var id = req.params.product_id;
@@ -69,7 +75,7 @@ app.get('/products:product_id',(req,res)=>{
 
   axios.get(url,{headers:options.headers})
   .then(apiRes=>{
-    console.log(apiRes.data);
+    //console.log(apiRes.data);
     res.json(apiRes.data)
   })
   .catch(err=> res.status(500).send('Error when retrieving data'))

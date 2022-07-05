@@ -10,10 +10,11 @@ class ReviewsRatings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      productId: props.productId,
       reviewsResults:[],
-      sort:'newest',
-      metaData:meta,
-      count:5,
+      sort: 'newest',
+      metaData: meta,
+      count: 5,
     }
 
   }
@@ -25,29 +26,28 @@ class ReviewsRatings extends React.Component {
   }
 
   ratingDisplay(){
-    let productId = this.props.productId;
+    let productId = this.state.productId;
     var sort = this.state.sort;
     var count = this.state.count;
     var page = 1;
 
     console.log('d')
-    let url =`/reviews?product_id=${productId}&sort=${sort}&count=${count}&page=${page}`
+    let url =`reviews?product_id=${productId}&sort=${sort}&count=${count}&page=${page}`
     fetch(url)
     .then(response => response.json())
     .then(data=>{this.setState({reviewsResults:data.results})})
-    .catch(err=> console.log('err inside ratingdisplay'))
+    .catch(err=> console.log(err))
 
 
   }
   summaryDisplay(){
-    console.log('s');
-    let productId = this.props.productId;
-    let url =`/reviews/meta/${productId}`
+    let productId = this.state.productId;
+    let url ='reviews/meta' + productId
 
     fetch(url)
     .then(response => response.json())
     .then(data=>{console.log('data ID '+data.recommended.false);this.setState({metaData:data})})
-    .catch(err=> console.log('err inside summaryplay'))
+    .catch(err=> console.log(err))
   }
 
   render(){
