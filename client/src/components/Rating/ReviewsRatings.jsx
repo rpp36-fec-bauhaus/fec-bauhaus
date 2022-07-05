@@ -16,7 +16,6 @@ class ReviewsRatings extends React.Component {
       metaData: meta,
       count: 5,
     }
-
   }
 
   componentDidMount(){
@@ -50,8 +49,9 @@ class ReviewsRatings extends React.Component {
     .catch(err=> console.log(err))
   }
 
+
+
   render(){
-    console.log()
     return (
       <div >
         <div className ="rating-box">
