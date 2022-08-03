@@ -44,11 +44,12 @@ const Characteristics = (props)=> {
 
   return(
   <div className="slidecontainer">
-    <div>
-    <p>{item}</p>
-    <input type="range" min="1" max="5" value={valueItem} step="0" className="slider"
-    id="myRange"></input>
-    </div>
+    <label>{item}
+
+    <input type="range" min="1" max="5" value={valueItem} step="0" id="slider"
+    />
+    </label>
+
 
     <span className ="alignleft">{text1}</span>
     <span className ="aligncenter">{text2}</span>
