@@ -41,6 +41,7 @@ class Rating extends React.Component {
   handleClose(e){
     this.setState({displayForm:!this.state. displayForm,
       displayButton:!this.state.displayButton});
+    this.props.refresh()
 
   }
 

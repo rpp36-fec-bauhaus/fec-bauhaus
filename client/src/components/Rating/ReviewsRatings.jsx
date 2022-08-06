@@ -104,7 +104,7 @@ class ReviewsRatings extends React.Component {
       <div >
         <div className ="rating-box">
         <Rating handlehelp ={this.handlehelp} productId={this.props.productId} results = {this.state.reviewsResults}
-        char ={this.state.metaData.characteristics}changSort={this.changSort} sort={this.state.sort}/>
+        char ={this.state.metaData.characteristics}changSort={this.changSort} sort={this.state.sort} refresh={this.refresh}/>
         </div>
         <div className="summary-box">
         <Summary results ={this.state.metaData}/>
